@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2529 CLICK — Photography</title>
+  <meta name="description" content="A personal photography journal.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a href="/" class="brand">2529 <span>CLICK</span></a>
+    <button id="uploadBtn" class="btn btn-primary">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+      <span>Upload</span>
+    </button>
+  </header>
+
+  <section class="hero">
+    <p class="eyebrow">Photography journal</p>
+    <h1>Moments, <em>framed.</em></h1>
+    <p class="hero-sub">Light, places and people — one click at a time.</p>
+  </section>
+
+  <nav class="tabs" role="tablist">
+    <button class="tab active" data-sort="latest" role="tab" aria-selected="true">Latest</button>
+    <button class="tab" data-sort="popular" role="tab" aria-selected="false">Most Viewed</button>
+    <span class="tab-indicator"></span>
+  </nav>
+
+  <main>
+    <div id="gallery" class="gallery"></div>
+    <div id="empty" class="empty" hidden>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3.5"/><path d="M8 5l1.5-2h5L16 5"/></svg>
+      <h2>No photos yet</h2>
+      <p>Click <strong>Upload</strong> to add your first photo.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">© <span id="year"></span> 2529 CLICK</footer>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox" hidden>
+    <button class="lb-close icon-btn" aria-label="Close">&times;</button>
+    <button class="lb-nav lb-prev icon-btn" aria-label="Previous">&#8249;</button>
+    <button class="lb-nav lb-next icon-btn" aria-label="Next">&#8250;</button>
+    <div class="lb-body">
+      <div class="lb-image-wrap"><img id="lbImg" alt=""></div>
+      <aside class="lb-info">
+        <h2 id="lbTitle"></h2>
+        <div class="lb-meta"><span id="lbDate"></span> · <span id="lbViews"></span></div>
+        <p id="lbDesc" class="lb-desc"></p>
+        <div id="lbAdmin" class="lb-admin" hidden>
+          <button id="editBtn" class="btn btn-ghost">Edit</button>
+          <button id="deleteBtn" class="btn btn-danger">Delete</button>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- Login -->
+  <div id="loginModal" class="modal" hidden>
+    <form id="loginForm" class="modal-card">
+      <h2>Owner login</h2>
+      <p class="muted">Enter your password to upload and edit photos.</p>
+      <input type="password" id="password" placeholder="Password" autocomplete="current-password" required>
+      <p class="error" id="loginError"></p>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-ghost" data-close>Cancel</button>
+        <button type="submit" class="btn btn-primary">Login</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Upload / Edit -->
+  <div id="uploadModal" class="modal" hidden>
+    <form id="uploadForm" class="modal-card wide">
+      <h2 id="uploadHeading">Upload a photo</h2>
+      <label id="dropzone" class="dropzone">
+        <input type="file" id="fileInput" accept="image/*" hidden>
+        <img id="preview" alt="" hidden>
+        <span id="dropText">Drag &amp; drop an image here, or <u>browse</u></span>
+      </label>
+      <input type="text" id="titleInput" placeholder="Title (optional)" maxlength="120">
+      <textarea id="descInput" rows="5" placeholder="Write something about this photo… (optional)" maxlength="5000"></textarea>
+      <p class="error" id="uploadError"></p>
+      <div class="modal-actions">
+        <button type="button" id="logoutBtn" class="btn btn-link">Log out</button>
+        <span class="spacer"></span>
+        <button type="button" class="btn btn-ghost" data-close>Cancel</button>
+        <button type="submit" id="submitBtn" class="btn btn-primary">Publish</button>
+      </div>
+    </form>
+  </div>
+
+  <div id="toast" class="toast" hidden></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

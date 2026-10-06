@@ -1,0 +1,17 @@
+{
+  "name": "2529click",
+  "version": "1.0.0",
+  "description": "Personal photography website — upload photos, write about them, browse latest and most viewed.",
+  "main": "server.js",
+  "private": true,
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "multer": "^2.0.0"
+  }
+}
