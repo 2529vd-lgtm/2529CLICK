@@ -33,6 +33,30 @@ Upload karne ke liye upar **Upload** button dabao aur password daalo. Visitors b
 
 Dono folders git mein commit nahi hote. Backup ke liye ye dono folders copy kar lo.
 
-## Online daalna (deploy)
+## Online daalna (Railway pe, step by step)
 
-Koi bhi Node.js hosting chalegi (Render, Railway, VPS, etc.). Start command `npm start` hai. `ADMIN_PASSWORD` environment variable set karo, aur `uploads/` aur `data/` ke liye persistent disk lagao, warna restart pe photos chali jaayengi.
+1. https://railway.com pe jao aur **Login with GitHub** se account banao.
+2. **New Project** → **Deploy from GitHub repo** → `2529CLICK` repo chuno.
+3. Service khulegi. **Settings** → **Source** mein branch `claude/gracious-knuth-mhefzl` chuno (ya pehle us branch ko `main` mein merge kar lo).
+4. **Variables** tab mein do variables daalo:
+   - `ADMIN_PASSWORD` = apna strong password
+   - `STORAGE_DIR` = `/data`
+5. Service pe right-click (ya **Command palette**) → **Attach Volume** → mount path `/data`. Isi mein photos permanently save hongi.
+6. **Settings** → **Networking** → **Generate Domain**. Aapko `kuch-naam.up.railway.app` jaisa link milega. Yahi aapki website hai.
+7. Deploy hone ka wait karo (1–2 minute), phir link kholo.
+
+## Password badalna
+
+Railway pe: **Variables** tab → `ADMIN_PASSWORD` ki value badlo → save. Railway khud redeploy kar dega. Photos safe rahengi.
+
+Apne computer pe: `ADMIN_PASSWORD="naya-password" npm start`
+
+## Photo upload karna
+
+1. Apni website kholo aur upar right mein **Upload** button dabao.
+2. Password daalo → **Login**.
+3. Photo box mein drag karo ya **browse** pe click karke photo chuno (mobile pe gallery khul jayegi).
+4. Title aur description likho (optional).
+5. **Publish** dabao. Photo Latest tab mein sabse upar aa jayegi.
+
+Edit ya delete ke liye: login ke baad photo pe click karo → **Edit** ya **Delete**.

@@ -7,8 +7,10 @@ const path = require('path');
 const PORT = process.env.PORT || 3000;
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'admin123';
 const ROOT = __dirname;
-const UPLOAD_DIR = path.join(ROOT, 'uploads');
-const DATA_DIR = path.join(ROOT, 'data');
+// Where photos and photos.json are kept. On a host, point this at a persistent volume.
+const STORAGE_DIR = process.env.STORAGE_DIR || ROOT;
+const UPLOAD_DIR = path.join(STORAGE_DIR, 'uploads');
+const DATA_DIR = path.join(STORAGE_DIR, 'data');
 const DB_FILE = path.join(DATA_DIR, 'photos.json');
 
 fs.mkdirSync(UPLOAD_DIR, { recursive: true });
