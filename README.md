@@ -33,7 +33,29 @@ Upload karne ke liye upar **Upload** button dabao aur password daalo. Visitors b
 
 Dono folders git mein commit nahi hote. Backup ke liye ye dono folders copy kar lo.
 
-## Online daalna (Railway pe, step by step)
+## Free: apne laptop se website chalana
+
+Photos aapke laptop ke `uploads/` folder mein hi rahengi. Laptop on rahega tabhi website khulegi.
+
+1. https://nodejs.org se **LTS** version download karke install karo.
+2. GitHub pe repo kholo → branch `claude/gracious-knuth-mhefzl` chuno → **Code** → **Download ZIP** → ZIP ko extract karo.
+3. Folder mein `.env.example` file ki copy banao, naam `.env` rakho, aur usme apna password likho:
+   `ADMIN_PASSWORD=apna-password`
+4. Folder ke andar terminal kholo (Windows: folder ke address bar mein `cmd` likh ke Enter).
+5. Pehli baar sirf ek dafa: `npm install`
+6. Website chalu karo: `npm start`
+7. Browser mein kholo: http://localhost:3000
+
+**Internet pe sabko dikhane ke liye (free):**
+
+- **ngrok** (fixed link): https://ngrok.com pe free account banao, ngrok install karo, dashboard se authtoken copy karke `ngrok config add-authtoken AAPKA_TOKEN` chalao. Dashboard → **Domains** se ek free domain lo, phir dusre terminal mein:
+  `ngrok http --url=aapka-naam.ngrok-free.app 3000`
+- **Cloudflare quick tunnel** (bina account, par link har baar badlega): `cloudflared` install karo aur chalao:
+  `cloudflared tunnel --url http://localhost:3000`
+
+Password badalna ho to `.env` file mein naya password likho aur `npm start` dobara chalao.
+
+## Paid: Railway pe (laptop band ho tab bhi chale)
 
 1. https://railway.com pe jao aur **Login with GitHub** se account banao.
 2. **New Project** → **Deploy from GitHub repo** → `2529CLICK` repo chuno.

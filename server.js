@@ -4,6 +4,11 @@ const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
 
+// Read settings like ADMIN_PASSWORD from a .env file next to this script, if there is one.
+try {
+  process.loadEnvFile(path.join(__dirname, '.env'));
+} catch {}
+
 const PORT = process.env.PORT || 3000;
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'admin123';
 const ROOT = __dirname;
